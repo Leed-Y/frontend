@@ -31,3 +31,41 @@ objWithFunction.array[0].b = 3;
 
 console.log(objWithFunction);
 console.log(objWithFunction2);
+
+function mockDeepClone2(source) {
+    let map = new WeakMap()
+
+    function deepClone(source2) {
+        var existObj = map.get(source2);
+        if (existObj) {
+            return existObj
+        }
+        // 1. 判断source是否是object
+        if (!isObject(source2)) return source2;
+
+        // 2.新建一个对象用于存储返回值
+        let result = source2 instanceof Array ? [] : {};
+        map.set(source2, result);
+        Object.keys(source2).forEach((key) => {
+            result[key] = mockDeepClone(source2[key]);
+        })
+        return result;
+    }
+    return deepClone(source)
+}
+
+var obj = {
+    a: {
+        name: 'a'
+    },
+    b: {
+        name: 'b'
+    },
+    c: {
+
+    }
+};
+obj.c.e = obj.a;
+
+var copy = mockDeepClone2(obj);
+console.log(copy);
