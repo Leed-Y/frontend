@@ -186,8 +186,6 @@ interface Tool {
 
 在最初的构想中，pdf预览层的界面文档结构每一页面都存在对应的Canvas对象，可以作为fabric的初始化Canvas载体。如图所示：
 
-<img src="/Users/administrator/Library/Application Support/typora-user-images/image-20200802180539108.png" alt="image-20200802180539108" style="zoom:50%;" />
-
 但在实际操作中发现，当缩放比例发生变化时，pdfjs会使页面重新渲染，canvas对象也会被先销毁而后再创建。也就是说如果基于这个canvas对象构造fabric编辑层，在缩放比例发生变化时，不能保证编辑层的图形，数据保存并自适应。
 
 ##### 解决方案
