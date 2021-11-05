@@ -76,4 +76,3 @@ var student = {
 doSth.mockApply(student, [1, 2])
 doSth.mockCall(student, [1, 2])
 doSth.mockBind(student)(1, 2)
-

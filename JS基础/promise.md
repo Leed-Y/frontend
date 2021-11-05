@@ -118,7 +118,7 @@ MockPromise.prototype.then = function (onFulfilled, onRejected) {
       onFulfilled(this.value);
     });
     this.onRejectedCallbacks.push(() => {
-      onRejected(this.reson);
+      onRejected(this.reason);
     });
   }
 
@@ -126,7 +126,7 @@ MockPromise.prototype.then = function (onFulfilled, onRejected) {
     onFulfilled(this.value);
   }
   if (this.state === "rejected") {
-    onRejected(this.reson);
+    onRejected(this.reason);
   }
 };
 ```
